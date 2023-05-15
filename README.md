@@ -1,63 +1,31 @@
-# A statically generated blog example using Next.js, Markdown, and TypeScript
+# Next.js Project Size Comparison
 
-This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
+This repository contains a comparison of project sizes between Next.js projects structured using the pages directory approach and the app directory approach.
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using Markdown files as the data source.
+## Introduction
 
-The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
+This repository aims to compare the resulting project sizes when adopting either of these approaches. It explores the impact on bundle size and build performance, helping developers make informed decisions about the project structure they choose.
 
-To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
+## Comparison Results
 
-## Demo
+The bundle size was analyzed using [Next.js + Webpack Bundle Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer "Next.js + Webpack Bundle Analyzer").
 
-[https://next-blog-starter.vercel.app/](https://next-blog-starter.vercel.app/)
+### Pages client bundle size
 
-## Deploy your own
+This is the result from from the `pages` branch.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/blog-starter)
+![Pages result](https://github.com/Makers-Den/next-bundle-test/blob/main/public/results/pages.png)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/blog-starter&project-name=blog-starter&repository-name=blog-starter)
+### App client bundle size
 
-### Related examples
+This is the result from the `app` branch.
 
-- [WordPress](/examples/cms-wordpress)
-- [DatoCMS](/examples/cms-datocms)
-- [Sanity](/examples/cms-sanity)
-- [TakeShape](/examples/cms-takeshape)
-- [Prismic](/examples/cms-prismic)
-- [Contentful](/examples/cms-contentful)
-- [Strapi](/examples/cms-strapi)
-- [Agility CMS](/examples/cms-agilitycms)
-- [Cosmic](/examples/cms-cosmic)
-- [ButterCMS](/examples/cms-buttercms)
-- [Storyblok](/examples/cms-storyblok)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent](/examples/cms-kontent)
-- [Umbraco Heartcore](/examples/cms-umbraco-heartcore)
-- [Builder.io](/examples/cms-builder-io)
-- [TinaCMS](/examples/cms-tina/)
-- [Enterspeed](/examples/cms-enterspeed)
+![App Results](https://github.com/Makers-Den/next-bundle-test/blob/main/public/results/app.png)
 
-## How to use
+The client bundle using app dir is 200kb bigger than pages dir.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Deployment
 
-```bash
-npx create-next-app --example blog-starter blog-starter-app
-```
+Run `yarn install` to install all dependencies for a project.
 
-```bash
-yarn create next-app --example blog-starter blog-starter-app
-```
-
-```bash
-pnpm create next-app --example blog-starter blog-starter-app
-```
-
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-# Notes
-
-`blog-starter` uses [Tailwind CSS](https://tailwindcss.com) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3).
+To analyze bundle size run `yarn analyze-bundle` (in the branches `app` or `pages`)
